@@ -1,0 +1,178 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id          String   @id @default(uuid())
+  provider    Provider
+  accountId   String   @map("account_id")
+  name        String?
+  credentials Json
+  isActive    Boolean  @default(true) @map("is_active")
+  assets      Asset[]
+  scans       Scan[]
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([provider, accountId])
+  @@map("accounts")
+}
+
+model Asset {
+  id           String         @id @default(uuid())
+  accountId    String         @map("account_id")
+  account      Account        @relation(fields: [accountId], references: [id])
+  provider     Provider
+  service      String
+  region       String?
+  resourceType String         @map("resource_type")
+  resourceId   String         @map("resource_id")
+  configs      AssetConfig[]
+  findings     Finding[]
+  driftEvents  DriftEvent[]
+  baseline     Baseline?
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+
+  @@unique([provider, resourceId])
+  @@map("assets")
+}
+
+model AssetConfig {
+  id          String   @id @default(uuid())
+  assetId     String   @map("asset_id")
+  asset       Asset    @relation(fields: [assetId], references: [id])
+  collectedAt DateTime @default(now()) @map("collected_at")
+  configHash  String   @map("config_hash")
+  rawConfig   Json     @map("raw_config")
+  metadata    Json?
+
+  @@index([configHash])
+  @@map("asset_configs")
+}
+
+model Scan {
+  id          String    @id @default(uuid())
+  accountId   String    @map("account_id")
+  account     Account   @relation(fields: [accountId], references: [id])
+  status      ScanStatus
+  startedAt   DateTime? @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  summary     Json?
+  findings    Finding[]
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  @@map("scans")
+}
+
+model Finding {
+  id        String   @id @default(uuid())
+  scanId    String   @map("scan_id")
+  scan      Scan     @relation(fields: [scanId], references: [id])
+  assetId   String   @map("asset_id")
+  asset     Asset    @relation(fields: [assetId], references: [id])
+  ruleId    String   @map("rule_id")
+  status    FindingStatus
+  severity  Severity
+  evidence  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([ruleId, status])
+  @@map("findings")
+}
+
+model DriftEvent {
+  id            String   @id @default(uuid())
+  assetId       String   @map("asset_id")
+  asset         Asset    @relation(fields: [assetId], references: [id])
+  oldConfigId   String?  @map("old_config_id")
+  oldConfig     AssetConfig? @relation("OldConfig", fields: [oldConfigId], references: [id])
+  newConfigId   String   @map("new_config_id")
+  newConfig     AssetConfig @relation("NewConfig", fields: [newConfigId], references: [id])
+  changeType    String?  @map("change_type")
+  diff          Json?
+  detectedAt    DateTime @default(now()) @map("detected_at")
+
+  @@index([assetId, detectedAt])
+  @@map("drift_events")
+}
+
+model Baseline {
+  id         String      @id @default(uuid())
+  assetId    String      @unique @map("asset_id")
+  asset      Asset       @relation(fields: [assetId], references: [id])
+  configId   String      @map("config_id")
+  config     AssetConfig @relation(fields: [configId], references: [id])
+  approvedBy String?     @map("approved_by")
+  approvedAt DateTime    @default(now()) @map("approved_at")
+  isCurrent  Boolean     @default(true) @map("is_current")
+
+  @@map("baselines")
+}
+
+model ComplianceFramework {
+  id          String              @id @default(uuid())
+  name        String
+  version     String?
+  description String?
+  controls    ComplianceControl[]
+
+  @@unique([name, version])
+  @@map("compliance_frameworks")
+}
+
+model ComplianceControl {
+  id           String                @id @default(uuid())
+  frameworkId  String                @map("framework_id")
+  framework    ComplianceFramework   @relation(fields: [frameworkId], references: [id])
+  controlId    String                @map("control_id")
+  title        String
+  description  String?
+  ruleMappings RuleComplianceMapping[]
+
+  @@unique([frameworkId, controlId])
+  @@map("compliance_controls")
+}
+
+model RuleComplianceMapping {
+  id         String            @id @default(uuid())
+  ruleId     String            @map("rule_id")
+  controlId  String            @map("control_id")
+  control    ComplianceControl @relation(fields: [controlId], references: [id])
+
+  @@unique([ruleId, controlId])
+  @@map("rule_compliance_mappings")
+}
+
+enum Provider {
+  aws
+  azure
+  gcp
+  oci
+  github
+}
+
+enum ScanStatus {
+  pending
+  running
+  completed
+  failed
+}
+
+enum FindingStatus {
+  pass
+  fail
+  warn
+}
+
+enum Severity {
+  low
+  medium
+  high
+  critical
+}
