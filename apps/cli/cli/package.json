@@ -1,0 +1,50 @@
+{
+  "name": "@cspm/cli",
+  "version": "1.0.0",
+  "description": "CSPM Command Line Interface",
+  "bin": {
+    "cspm": "./bin/run"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/src"
+  ],
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cspm",
+    "plugins": [],
+    "topics": {
+      "scan": {
+        "description": "Scan cloud resources"
+      },
+      "auth": {
+        "description": "Authentication management"
+      },
+      "accounts": {
+        "description": "Cloud account management"
+      }
+    }
+  },
+  "dependencies": {
+    "@oclif/core": "^2.9.2",
+    "@oclif/plugin-help": "^5.2.9",
+    "axios": "^1.4.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@oclif/test": "^3.2.10",
+    "@types/inquirer": "^8.2.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "prepack": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
