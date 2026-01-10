@@ -1,0 +1,29 @@
+{
+  "name": "@cspm/aws-provider",
+  "version": "1.0.0",
+  "description": "AWS provider adapter for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.398.0",
+    "@aws-sdk/client-iam": "^3.398.0",
+    "@aws-sdk/client-ec2": "^3.398.0",
+    "@aws-sdk/client-rds": "^3.398.0",
+    "@aws-sdk/client-cloudtrail": "^3.398.0",
+    "@aws-sdk/client-cloudwatch": "^3.398.0",
+    "@aws-sdk/client-config-service": "^3.398.0",
+    "@aws-sdk/client-sts": "^3.398.0",
+    "@aws-sdk/credential-providers": "^3.398.0",
+    "@cspm/core-engine": "workspace:*",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
