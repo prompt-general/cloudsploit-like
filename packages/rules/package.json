@@ -1,0 +1,18 @@
+{
+  "name": "@cspm/rules",
+  "version": "1.0.0",
+  "description": "Security rules for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@cspm/core-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
