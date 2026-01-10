@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Cloud } from 'lucide-react';
+import { Cloud, AlertTriangle } from 'lucide-react';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   
   const navigation = [
     { name: 'Dashboard', href: '/', icon: '🏠' },
+    { name: 'Drift Detection', href: '/drift', icon: '⚠️' },
     { name: 'Scans', href: '/scans', icon: '🔍' },
     { name: 'Assets', href: '/assets', icon: '📦' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -21,6 +22,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
                 <Cloud className="h-8 w-8 text-blue-600" />
+                <AlertTriangle className="h-8 w-8 text-yellow-600 -ml-2" />
                 <span className="ml-2 text-xl font-bold text-gray-900">CSPM Dashboard</span>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
