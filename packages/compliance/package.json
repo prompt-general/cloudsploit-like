@@ -1,0 +1,23 @@
+{
+  "name": "@cspm/compliance",
+  "version": "1.0.0",
+  "description": "Compliance frameworks and control definitions for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "seed": "ts-node scripts/seed-frameworks.ts"
+  },
+  "dependencies": {
+    "@cspm/core-engine": "workspace:*",
+    "yaml": "^2.3.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/js-yaml": "^4.0.5",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}
