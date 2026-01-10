@@ -11,16 +11,25 @@
     "dev:api": "cd apps/api && npm run start:dev",
     "dev:ui": "cd apps/ui && npm run dev",
     "build": "npm run build --workspaces",
+    "build:api": "cd apps/api && npm run build",
+    "build:ui": "cd apps/ui && npm run build",
+    "build:cli": "cd apps/cli && npm run build",
+    "build:packages": "npm run build --workspace=packages/core-engine --workspace=packages/providers/aws --workspace=packages/rules",
     "lint": "eslint .",
     "docker:up": "docker-compose -f infra/docker-compose.yml up -d",
     "docker:down": "docker-compose -f infra/docker-compose.yml down",
-    "db:migrate": "cd apps/api && npm run prisma:migrate"
+    "db:migrate": "cd apps/api && npx prisma migrate dev",
+    "db:generate": "cd apps/api && npx prisma generate",
+    "db:seed": "cd apps/api && npx ts-node prisma/seed.ts",
+    "start:dev": "concurrently \"npm run dev:api\" \"npm run dev:ui\"",
+    "test": "npm run test --workspaces"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
     "@types/node": "^20.0.0",
     "eslint": "^8.0.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "concurrently": "^8.0.0"
   },
   "engines": {
     "node": ">=20.0.0",
