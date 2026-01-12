@@ -11,6 +11,8 @@ import AssetDrift from './pages/drift/AssetDrift';
 import ComplianceDashboard from './pages/compliance/Dashboard';
 import ComplianceFrameworks from './pages/compliance/Frameworks';
 import FrameworkDetails from './pages/compliance/FrameworkDetails';
+import ComplianceAssessment from './pages/compliance/Assessment';
+import ComplianceReport from './pages/compliance/Report';
 import Layout from './components/Layout';
 
 const queryClient = new QueryClient();
@@ -37,8 +39,8 @@ function App() {
             <Route path="/compliance" element={<ComplianceDashboard />} />
             <Route path="/compliance/frameworks" element={<ComplianceFrameworks />} />
             <Route path="/compliance/frameworks/:id" element={<FrameworkDetails />} />
-            <Route path="/compliance/assess" element={<div>Compliance Assessment (TODO)</div>} />
-            <Route path="/compliance/reports" element={<div>Compliance Reports (TODO)</div>} />
+            <Route path="/compliance/assess" element={<ComplianceAssessment />} />
+            <Route path="/compliance/report" element={<ComplianceReport />} />
             <Route path="/compliance/gap-analysis/:id" element={<div>Gap Analysis (TODO)</div>} />
             <Route path="/compliance/controls/:id" element={<div>Control Details (TODO)</div>} />
           </Routes>

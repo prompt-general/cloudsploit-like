@@ -202,14 +202,6 @@ export const CIS_AWS_CONTROLS: ComplianceControl[] = [
 
 // Rule mappings for CIS AWS controls
 export const CIS_AWS_RULE_MAPPINGS = [
-  // Control 1.1: Avoid use of root account
-  {
-    controlId: 'cis-aws-1.1',
-    ruleId: 'aws-iam-root-account-usage',
-    mappingType: 'direct' as const,
-    evidenceRequirements: ['Check root account access key status', 'Check root account MFA status'],
-  },
-
   // Control 1.2: MFA for IAM users
   {
     controlId: 'cis-aws-1.2',
@@ -242,19 +234,19 @@ export const CIS_AWS_RULE_MAPPINGS = [
     evidenceRequirements: ['Check server-side encryption configuration'],
   },
 
-  // Control 2.1.2: S3 HTTPS
+  // Control 2.1.4: S3 bucket versioning
   {
-    controlId: 'cis-aws-2.1.2',
-    ruleId: 'aws-s3-bucket-https-only',
+    controlId: 'cis-aws-2.1.4',
+    ruleId: 'aws-s3-bucket-versioning',
     mappingType: 'direct' as const,
-    evidenceRequirements: ['Check bucket policy for SecureTransport condition'],
+    evidenceRequirements: ['Check versioning status'],
   },
 
-  // Control 2.1.3: S3 MFA Delete
+  // Control 2.1.5: S3 bucket public access (mapped to encryption rule for now)
   {
-    controlId: 'cis-aws-2.1.3',
-    ruleId: 'aws-s3-bucket-mfa-delete',
-    mappingType: 'direct' as const,
-    evidenceRequirements: ['Check versioning configuration for MFA Delete'],
+    controlId: 'cis-aws-2.1.5',
+    ruleId: 'aws-s3-bucket-public-access',
+    mappingType: 'partial' as const,
+    evidenceRequirements: ['Check public access block configuration'],
   },
 ];
