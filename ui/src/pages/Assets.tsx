@@ -24,11 +24,16 @@ const Assets: React.FC = () => {
   const getServiceIcon = (service: string) => {
     switch (service) {
       case 's3':
+      case 'storage':
         return <Database className="h-5 w-5 text-blue-600" />;
       case 'iam':
         return <User className="h-5 w-5 text-green-600" />;
+      case 'compute':
+        return <Server className="h-5 w-5 text-purple-600" />;
+      case 'network':
+        return <Server className="h-5 w-5 text-orange-600" />;
       default:
-        return <Server className="h-5 w-5 text-gray-600" />;
+        return <Database className="h-5 w-5 text-gray-600" />;
     }
   };
 
@@ -114,6 +119,8 @@ const Assets: React.FC = () => {
                         ? 'bg-blue-100 text-blue-800'
                         : asset.provider === 'gcp'
                         ? 'bg-green-100 text-green-800'
+                        : asset.provider === 'oci'
+                        ? 'bg-red-100 text-red-800'
                         : 'bg-purple-100 text-purple-800'
                     }`}
                   >

@@ -13,6 +13,7 @@ import ComplianceFrameworks from './pages/compliance/Frameworks';
 import FrameworkDetails from './pages/compliance/FrameworkDetails';
 import ComplianceAssessment from './pages/compliance/Assessment';
 import ComplianceReport from './pages/compliance/Report';
+import Settings from './pages/Settings';
 import Layout from './components/Layout';
 
 const queryClient = new QueryClient();
@@ -43,6 +44,9 @@ function App() {
             <Route path="/compliance/report" element={<ComplianceReport />} />
             <Route path="/compliance/gap-analysis/:id" element={<div>Gap Analysis (TODO)</div>} />
             <Route path="/compliance/controls/:id" element={<div>Control Details (TODO)</div>} />
+            
+            {/* Settings Routes */}
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </Layout>
       </Router>

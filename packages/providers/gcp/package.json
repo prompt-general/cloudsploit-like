@@ -1,0 +1,26 @@
+{
+  "name": "@cspm/gcp-provider",
+  "version": "1.0.0",
+  "description": "GCP provider adapter for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.7.0",
+    "@google-cloud/compute": "^4.7.0",
+    "@google-cloud/iam": "^3.5.0",
+    "@google-cloud/resource-manager": "^5.0.0",
+    "@google-cloud/monitoring": "^3.5.0",
+    "@google-cloud/logging": "^10.5.0",
+    "@cspm/core-engine": "workspace:*",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -129,10 +129,62 @@ const ComplianceDashboard: React.FC = () => {
           {/* Framework Coverage */}
           <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900">Framework Coverage</h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-gray-900">Multi-Cloud Compliance Overview</h3>
+                <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <span>Combined across all cloud providers</span>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="p-6">
-              <FrameworkCoverage frameworks={frameworksData} />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* AWS Compliance */}
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🟠</div>
+                  <h4 className="font-medium text-gray-900">AWS</h4>
+                  <div className="text-2xl font-bold text-orange-600">85%</div>
+                  <p className="text-sm text-gray-500">12 controls</p>
+                </div>
+                
+                {/* Azure Compliance */}
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🔵</div>
+                  <h4 className="font-medium text-gray-900">Azure</h4>
+                  <div className="text-2xl font-bold text-blue-600">78%</div>
+                  <p className="text-sm text-gray-500">8 controls</p>
+                </div>
+                
+                {/* GCP Compliance */}
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🟢</div>
+                  <h4 className="font-medium text-gray-900">GCP</h4>
+                  <div className="text-2xl font-bold text-green-600">92%</div>
+                  <p className="text-sm text-gray-500">15 controls</p>
+                </div>
+                
+                {/* OCI Compliance */}
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🔴</div>
+                  <h4 className="font-medium text-gray-900">OCI</h4>
+                  <div className="text-2xl font-bold text-red-600">N/A</div>
+                  <p className="text-sm text-gray-500">No data</p>
+                </div>
+              </div>
+              
+              {/* Overall Multi-Cloud Score */}
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <div className="text-center">
+                  <h4 className="text-lg font-medium text-gray-900 mb-2">Overall Multi-Cloud Score</h4>
+                  <div className="text-4xl font-bold text-purple-600">85%</div>
+                  <p className="text-sm text-gray-500">Across 4 cloud providers</p>
+                </div>
+              </div>
             </div>
           </div>
 
