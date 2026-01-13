@@ -7,3 +7,6 @@ export type { DriftEvent } from './engine/drift-engine';
 export { BaselineManager, type BaselineOptions, type BaselineWithConfig } from './engine/baseline-manager';
 export { EnhancedDriftEngine, type EnhancedDriftEvent } from './engine/enhanced-drift-engine';
 export { ComplianceEngine, type ComplianceAssessment, type ComplianceControlAssessment } from './engine/compliance-engine';
+export { MLRiskPrioritizer, type RiskScore, type RiskFactors, type MLModelConfig } from './engine/ml-risk-prioritizer';
+export { AttackPathSimulator, type AttackNode, type AttackEdge, type AttackPath, type AttackGraph, type SimulationConfig } from './engine/attack-path-simulator';
+export { AutoRemediationEngine, type RemediationAction, type RemediationPlan, type ExecutionResult, type RollbackPlan, type RemediationConfig } from './engine/auto-remediation';
