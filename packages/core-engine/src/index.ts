@@ -10,3 +10,6 @@ export { ComplianceEngine, type ComplianceAssessment, type ComplianceControlAsse
 export { MLRiskPrioritizer, type RiskScore, type RiskFactors, type MLModelConfig } from './engine/ml-risk-prioritizer';
 export { AttackPathSimulator, type AttackNode, type AttackEdge, type AttackPath, type AttackGraph, type SimulationConfig } from './engine/attack-path-simulator';
 export { AutoRemediationEngine, type RemediationAction, type RemediationPlan, type ExecutionResult, type RollbackPlan, type RemediationConfig } from './engine/auto-remediation';
+export { MultiCloudResourceMapper, type CrossCloudConnection, type ResourceDependency, type CloudTopology, type TopologyAnalysis, type MappingConfig } from './engine/multi-cloud-mapper';
+export { RealtimeDriftDetector, type DriftEvent as RealtimeDriftEvent, type DriftChange, type AlertRule, type AlertCondition, type AlertAction, type AlertNotification, type DriftDetectorConfig } from './engine/realtime-drift-detector';
+export { CostSecurityOptimizer, type CostSecurityMetric, type CostOptimizationRecommendation, type SecurityWasteAnalysis, type CostSecurityReport, type ImplementationRoadmap, type CostSecurityConfig } from './engine/cost-security-optimizer';
