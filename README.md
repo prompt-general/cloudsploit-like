@@ -173,7 +173,7 @@ cloudsploit-like/
 | PCI-DSS | ✅ | 12+ | 25+ |
 | ISO 27001 | ✅ | 114+ | 90+ |
 | NIST | ✅ | 200+ | 150+ |
-| Cloud Security Baseline | ✅ | 5 | 15+ |
+| Cloud Security Baseline | ✅ | 5 | 39+ |
 
 ### 🔄 **Continuous Compliance**
 - **Automated Assessments**: Schedule regular compliance scans
