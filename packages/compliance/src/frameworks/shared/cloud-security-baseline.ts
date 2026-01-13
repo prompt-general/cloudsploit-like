@@ -103,6 +103,13 @@ export const CLOUD_SECURITY_BASELINE_RULE_MAPPINGS = [
     mappingType: 'direct' as const,
     evidenceRequirements: ['Check bucket encryption settings'],
   },
+  {
+    controlId: 'csb-1',
+    ruleId: 'oci-objectstorage-bucket-encryption',
+    provider: 'oci',
+    mappingType: 'direct' as const,
+    evidenceRequirements: ['Check KMS key configuration'],
+  },
 
   // Access control
   {
@@ -126,6 +133,20 @@ export const CLOUD_SECURITY_BASELINE_RULE_MAPPINGS = [
     mappingType: 'partial' as const,
     evidenceRequirements: ['Review IAM policies for public access'],
   },
+  {
+    controlId: 'csb-2',
+    ruleId: 'oci-objectstorage-bucket-public-access',
+    provider: 'oci',
+    mappingType: 'partial' as const,
+    evidenceRequirements: ['Check public access settings and pre-authenticated requests'],
+  },
+  {
+    controlId: 'csb-2',
+    ruleId: 'github-repository-security',
+    provider: 'github',
+    mappingType: 'partial' as const,
+    evidenceRequirements: ['Verify Advanced Security features are enabled'],
+  },
 
   // Network security
   {
@@ -148,5 +169,19 @@ export const CLOUD_SECURITY_BASELINE_RULE_MAPPINGS = [
     provider: 'gcp',
     mappingType: 'partial' as const,
     evidenceRequirements: ['Check VPC service controls and firewall rules'],
+  },
+  {
+    controlId: 'csb-3',
+    ruleId: 'oci-objectstorage-bucket-public-access',
+    provider: 'oci',
+    mappingType: 'partial' as const,
+    evidenceRequirements: ['Review network security rules and VPC configuration'],
+  },
+  {
+    controlId: 'csb-3',
+    ruleId: 'github-repository-protection',
+    provider: 'github',
+    mappingType: 'partial' as const,
+    evidenceRequirements: ['Check branch protection rules and status checks'],
   },
 ];

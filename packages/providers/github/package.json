@@ -1,0 +1,23 @@
+{
+  "name": "@cspm/github-provider",
+  "version": "1.0.0",
+  "description": "GitHub provider adapter for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.0",
+    "@octokit/auth-app": "^6.0.0",
+    "@octokit/auth-token": "^4.0.0",
+    "@cspm/core-engine": "workspace:*",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
