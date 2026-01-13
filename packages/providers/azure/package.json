@@ -1,0 +1,28 @@
+{
+  "name": "@cspm/azure-provider",
+  "version": "1.0.0",
+  "description": "Azure provider adapter for CSPM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.0.0",
+    "@azure/arm-resources": "^5.2.0",
+    "@azure/arm-storage": "^18.1.0",
+    "@azure/arm-compute": "^20.0.0",
+    "@azure/arm-network": "^33.0.0",
+    "@azure/arm-security": "^6.0.0",
+    "@azure/arm-monitor": "^6.0.0",
+    "@azure/storage-blob": "^12.15.0",
+    "@cspm/core-engine": "workspace:*",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
