@@ -1,8 +1,8 @@
-# 🛡️ CloudSploit-like CSPM
+# 🛡️ PathGuard CSPM
 
 > **Enterprise-grade, open-source Cloud Security Posture Management** with multi-cloud support, real-time drift detection, and comprehensive compliance mapping.
 
-## 🌟 What Makes This Project Stand Out
+
 
 ### ✨ **Key Differentiators**
 - **🌐 True Multi-Cloud**: Native support for AWS, Azure, GCP, OCI, and GitHub - not just AWS wrappers
