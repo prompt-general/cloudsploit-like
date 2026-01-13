@@ -21,19 +21,58 @@
 - **OCI**: Block Storage, Compute, Identity, Audit, Logging
 - **GitHub**: Repositories, Organizations, Actions, Security Advisories
 
-### 🔍 **Drift Detection**
+### 🧠 **AI-Powered Security Intelligence**
+- **ML Risk Prioritization**: Predictive breach probability with weighted risk factors
+- **Attack Path Simulation**: Graph-based lateral movement analysis with Neo4j
+- **Threat Intelligence Integration**: Real-time CISA KEV, VulnDB, and NVD feeds
+- **MITRE ATT&CK Mapping**: Comprehensive threat framework correlation
+- **Context-Aware Alerts**: Industry-specific threat detection (healthcare, finance)
+
+### 🔍 **Advanced Drift Detection**
 - **Baseline Management**: Set known-good configurations
 - **Real-Time Monitoring**: Continuous configuration tracking
 - **Change Analysis**: Detailed JSON diffs with categorization
 - **Alert Integration**: Automated notifications for critical changes
 - **Historical Tracking**: Complete audit trail of all modifications
 
-### 📊 **Compliance Mapping**
-- **Industry Standards**: CIS, SOC 2, ISO 27001, PCI-DSS, NIST
-- **Cloud-Agnostic**: Security baseline framework for all providers
-- **Real-Time Scoring**: Dynamic compliance assessment with trend analysis
-- **Gap Analysis**: Identify security gaps across cloud environments
-- **Report Generation**: Export in JSON, CSV, PDF formats
+### 🤖 **Automated Remediation**
+- **Safe Auto-Remediation**: Terraform/CloudFormation code generation
+- **Approval Workflows**: Multi-stage approval process for changes
+- **Rollback Capabilities**: Automated rollback with validation
+- **IaC Integration**: Seamless DevOps pipeline integration
+
+### 🌍 **Multi-Cloud Resource Mapping**
+- **Cross-Cloud Connections**: Discover relationships across providers
+- **Dependency Analysis**: Resource dependency graph visualization
+- **Topology Export**: Multiple formats (JSON, GraphML, D3.js)
+- **Attack Surface Mapping**: Unified security posture analysis
+
+### 💰 **Cost-Security Optimization**
+- **Security Waste Analysis**: Identify overspending on security tools
+- **ROI Calculations**: Quantify security investment returns
+- **Resource Optimization**: Right-size security configurations
+- **Implementation Roadmaps**: Prioritized cost-saving recommendations
+
+### 👨‍💻 **Developer-First Security**
+- **GitHub Actions**: Automated security scanning workflows
+- **VS Code Extension**: Real-time security feedback in IDE
+- **Slack Bot Integration**: Security notifications and approvals
+- **Pre-Commit Hooks**: Security validation before code commits
+- **Security Policies**: Custom policy-as-code frameworks
+
+### 📦 **Container & Serverless Security**
+- **Container Image Scanning**: Vulnerability detection with CVE databases
+- **Kubernetes Security**: Pod security policies and network rules
+- **Serverless Analysis**: Lambda/Functions security assessment
+- **Runtime Protection**: Container and function runtime monitoring
+- **Secret Detection**: Identify hardcoded secrets in images and code
+
+### 📋 **Compliance-as-Code**
+- **Multi-Framework Support**: CIS, SOC 2, PCI-DSS, NIST, ISO27001
+- **Terraform Modules**: Automated compliance deployment
+- **Evidence Collection**: Automated evidence gathering for audits
+- **Audit Reports**: Export in multiple formats (JSON, YAML, CloudFormation)
+- **Continuous Monitoring**: Real-time compliance scoring
 
 ### ⚡ **Rule Engine**
 - **Plugin Architecture**: Extensible rule system with TypeScript interfaces
@@ -55,12 +94,20 @@ graph TB
         API[NestJS] --> CoreEngine
         API --> ComplianceEngine
         API --> DriftEngine
+        API --> MLEngine
+        API --> ThreatIntel
     end
     
     subgraph "Core Engine"
         CoreEngine --> RuleEngine
         CoreEngine --> BaselineManager
         CoreEngine --> EnhancedDriftEngine
+        CoreEngine --> AttackPathSim
+        CoreEngine --> AutoRemediation
+        CoreEngine --> CostOptimizer
+        CoreEngine --> DevSecurity
+        CoreEngine --> ComplianceAsCode
+        CoreEngine --> ContainerEngine
     end
     
     subgraph "Provider Layer"
@@ -71,9 +118,11 @@ graph TB
         RuleEngine --> GitHub[GitHub API]
     end
     
-    subgraph "Data Layer"
+    subgraph "Data & Intelligence Layer"
         CoreEngine --> PostgreSQL[(PostgreSQL)]
         CoreEngine --> ObjectStorage[(MinIO/S3)]
+        MLEngine --> Neo4j[(Neo4j)]
+        ThreatIntel --> ThreatFeeds[(Threat Intel APIs)]
     end
 ```
 
@@ -113,6 +162,7 @@ npm run build
 ## 🛠️ Development
 
 ### 🏗️ **Monorepo Structure**
+
 ```
 cloudsploit-like/
 ├── 📁 apps/                          # User-facing applications
@@ -120,7 +170,19 @@ cloudsploit-like/
 │   ├── cli/                        # oclif CLI tool
 │   └── ui/                         # React web dashboard
 ├── 📦 packages/                      # Shared libraries
-│   ├── core-engine/               # Core CSPM logic
+│   ├── core-engine/               # Core CSPM logic with advanced features
+│   │   ├── src/engine/           # Advanced security engines
+│   │   │   ├── ml-risk-prioritizer.ts
+│   │   │   ├── attack-path-simulator.ts
+│   │   │   ├── auto-remediation.ts
+│   │   │   ├── multi-cloud-mapper.ts
+│   │   │   ├── realtime-drift-detector.ts
+│   │   │   ├── cost-security-optimizer.ts
+│   │   │   ├── developer-security.ts
+│   │   │   ├── compliance-as-code.ts
+│   │   │   ├── container-serverless-context.ts
+│   │   │   └── threat-intelligence.ts
+│   │   └── src/schemas/          # Data schemas
 │   ├── providers/                  # Cloud adapters
 │   │   ├── aws/                   # AWS provider
 │   │   ├── azure/                 # Azure provider  
@@ -136,12 +198,14 @@ cloudsploit-like/
 ```
 
 ### 🔧 **Technology Stack**
+
 - **Language**: TypeScript (type-safe, modern)
 - **Backend**: NestJS, PostgreSQL, Prisma ORM
 - **Frontend**: React 18, Vite, TailwindCSS, React Query
 - **CLI**: oclif, Commander.js
 - **Infrastructure**: Docker, Docker Compose
 - **Cloud SDKs**: AWS SDK v3, Azure SDK, GCP Cloud SDKs
+- **Advanced Features**: Neo4j (graph DB), ML models, Threat Intel APIs
 
 ## 📊 Multi-Cloud Dashboard
 
@@ -166,14 +230,15 @@ cloudsploit-like/
 ## 📈 Compliance Coverage
 
 ### 🎯 **Industry Standards**
+
 | Framework | Provider Coverage | Controls | Rules |
-|------------|------------------|----------|-------|
-| CIS AWS | ✅ | 20+ | 15+ |
-| SOC 2 | ✅ | 80+ | 60+ |
-| PCI-DSS | ✅ | 12+ | 25+ |
-| ISO 27001 | ✅ | 114+ | 90+ |
-| NIST | ✅ | 200+ | 150+ |
-| Cloud Security Baseline | ✅ | 5 | 39+ |
+|-----------|------------------|----------|-------|
+| CIS AWS   | ✅               | 20+      | 15+   |
+| SOC 2     | ✅               | 80+      | 60+   |
+| PCI-DSS   | ✅               | 12+      | 25+   |
+| ISO 27001 | ✅               | 114+     | 90+   |
+| NIST      | ✅               | 200+     | 150+  |
+| Cloud Security Baseline | ✅ | 5        | 39+   |
 
 ### 🔄 **Continuous Compliance**
 - **Automated Assessments**: Schedule regular compliance scans
